@@ -5,8 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.not
-import org.hamcrest.Matchers.nullValue
+import org.hamcrest.Matchers.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,5 +23,16 @@ class TasksViewModelTest {
         taskViewModel.addNewTask()
         val value = taskViewModel.newTaskEvent.getOrAwaitValue()
         assertThat(value.getContentIfNotHandled(), not(nullValue()))
+    }
+
+    @Test
+    fun setFilterAllTask_tasksAddViewVisible() {
+        val taskViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
+
+        val filterType = TasksFilterType.ALL_TASKS
+        taskViewModel.setFiltering(filterType)
+
+        val value = taskViewModel.tasksAddViewVisible.getOrAwaitValue()
+        assertThat(value, `is`(true))
     }
 }
