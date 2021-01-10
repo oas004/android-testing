@@ -25,6 +25,7 @@ android {
         enabled = true
         enabledForTests = true
     }
+
 }
 
 dependencies {
@@ -65,6 +66,9 @@ dependencies {
 
     // AndroidX Arc testing
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    // KotlinX coroutine test
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
     // Robolectric
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
